@@ -29,11 +29,7 @@ def test(message):
             cur.execute("INSERT INTO users (id) VALUES (?)",(message.chat.id,))
             conn.commit()
             bot.send_message(message.chat.id, "Теперь вы будете получать рассылку!")
-    markup_inline = types.InlineKeyboardMarkup()
-    btn_y = types.InlineKeyboardButton(text="yes",callback_data="yes")
-    btn_n = types.InlineKeyboardButton(text="no",callback_data="no")
-    markup_inline.add(btn_y, btn_n)
-    bot.send_message(message.chat.id, "Хочешь продолжить?", reply_markup=markup_inline)
+    bot.send_message(message.chat.id)
 
 def help(message):
     admin_markup = types.ReplyKeyboardMarkup(resize_keyboard=True)
